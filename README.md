@@ -7,6 +7,9 @@ Add real-time AI video enhancement that makes video meeting experience more effe
 - Electron
 - Nodejs
 
+## Supported system
+Windows, macOS, Linux (Astra Common Edition, RedOS, Ubuntu 16-20)
+
 ## Documentation
 [SDK Documentation](https://effectssdk.com/sdk/web/docs/classes/tsvb.html)
 
