@@ -11,7 +11,8 @@ Add real-time AI video enhancement that makes video meeting experience more effe
 Windows, macOS, Linux (Astra Common Edition, RedOS, Ubuntu 16-20)
 
 ## Documentation
-[SDK Documentation](https://effectssdk.com/sdk/web/docs/classes/tsvb.html)
+- [API Reference](https://effectssdk.com/sdk/web/docs/classes/tsvb.html)
+- [Feature Usage](docs/Features-Usage-Examples.md)
 
 ## Obtaining Effects SDK Customer ID
 Effects SDK Customer ID is required to get SDK working.
@@ -31,10 +32,14 @@ To receive a new trial Customer ID please fill in the contact form on [effectssd
 - Use Desktop Capture as a background - **implemented**
 - Background blur - **implemented**
 - Beautification/Touch up my appearance - **implemented**
+- Auto framing - **implemented**
+- Auto color correction - **implemented**
 - Layouts - **implemented**
-- Auto framing - **in progress**
-- Auto color correction - **in progress**
-- Color grading - **in progress**
+- One basic Lower-Third - **implemented**
+- Overlays - **implemented**
+- New Lower-Thirds (5) - **in progress**
+- Color filters - **in progress**
+- Low-light mode - **in progress**
 
 ## Environment setup and local run
 

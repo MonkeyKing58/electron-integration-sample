@@ -9,7 +9,7 @@
 <!-- <canvas id="testCanvas" width="1280" height="720"></canvas> -->
 <video id="testVideo" controls width="720" autoplay></video>
 
-<script src="tsvb-web.js?v=1.1.4"></script>
+<script src="sdk/tsvb-web.js"></script>
 
 <script>
 
@@ -21,7 +21,6 @@
     sdk.onReady = () => {
         sdk.run();
         sdk.setSegmentationPreset('quality');
-        sdk.showFps();
         sdk.enableFrameSkipping();
         sdk.setBackground('image-background.jpg');
         console.log('SDK ready let\'s run it');
@@ -30,8 +29,8 @@
     window.addEventListener('load', function () {
         sdk.clear();
         navigator.mediaDevices.getUserMedia({ video: {
-                width: 640,
-                height: 480
+                width: 1280,
+                height: 720
             } }).then(stream => {
             sdk.useStream(stream);
 
