@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Effects SDK - Electron Integration Sample</title>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- <canvas id="testCanvas" width="1280" height="720"></canvas> -->
+    <video id="testVideo" controls width="720" autoplay></video>
 
-<!-- <canvas id="testCanvas" width="1280" height="720"></canvas> -->
-<video id="testVideo" controls width="720" autoplay></video>
+    <script type="module">
+      // Example without using a module bundler
+      import { tsvb } from "./node_modules/effects-sdk/tsvb.js";
+      const sdk = new tsvb("8acdc08bbc7a08b90e481e9c6a7d6450b479356c", window.inferer);
 
-<script src="sdk/tsvb-web.js"></script>
+      // window.root_path definited in preload.js
+      sdk.config({
+        sdk_url: "./sdk/",
+        wasmPaths: {
+          "ort-wasm.wasm": window.root_path + "/sdk/ort-wasm.wasm",
+          "ort-wasm-simd.wasm": window.root_path + "/sdk/ort-wasm-simd.wasm",
+          "ort-wasm-threaded.wasm": window.root_path + "/sdk/ort-wasm-threaded.wasm",
+          "ort-wasm-simd-threaded.wasm": window.root_path + "/sdk/ort-wasm-simd-threaded.wasm",
+        },
+      });
 
-<script>
+      //let canvas = document.getElementById('testCanvas');
+      let video = document.getElementById("testVideo");
 
-    const sdk = new window.tsvb('{CUSTOMER_ID}', window.inferer);
-
-    //let canvas = document.getElementById('testCanvas');
-    let video = document.getElementById('testVideo');
-
-    sdk.onReady = () => {
+      sdk.onReady = () => {
         sdk.run();
-        sdk.setSegmentationPreset('quality');
+        sdk.setSegmentationPreset("quality");
         sdk.enableFrameSkipping();
-        sdk.setBackground('image-background.jpg');
-        console.log('SDK ready let\'s run it');
-    }
+        sdk.setBackground("image-background.jpg");
+        console.log("SDK ready let's run it");
+      };
 
-    window.addEventListener('load', function () {
+      window.addEventListener("load", function () {
         sdk.clear();
-        navigator.mediaDevices.getUserMedia({ video: {
-                width: 1280,
-                height: 720
-            } }).then(stream => {
+        navigator.mediaDevices
+          .getUserMedia({
+            video: {
+              width: 1280,
+              height: 720,
+            },
+          })
+          .then((stream) => {
             sdk.useStream(stream);
 
             //draw sdk results to canvas
@@ -39,10 +52,8 @@
 
             //draw sdk results to MediaStream
             video.srcObject = sdk.getStream();
-        });
-    })
-
-</script>
-
-</body>
+          });
+      });
+    </script>
+  </body>
 </html>
