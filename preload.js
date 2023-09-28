@@ -1,6 +1,5 @@
 const { contextBridge, ipcRenderer } = require("electron");
 const tsvb = require("./libs/win/tsvb");
-const path = require("path");
 
 //const tsvb = require("./libs/linux/TSVB");
 //const tsvb = require("./libs/mac/tsvb");
@@ -8,7 +7,7 @@ const path = require("path");
 const inference = new tsvb.InferenceSession();
 
 // Define window.root_path
-contextBridge.exposeInMainWorld("root_path", path.resolve(__dirname, ""));
+contextBridge.exposeInMainWorld("root_path", __dirname);
 
 contextBridge.exposeInMainWorld("inferer", {
   run: (data) => {
